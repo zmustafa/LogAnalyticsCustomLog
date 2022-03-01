@@ -6,4 +6,4 @@ All Log Analytics queries: https://raw.githubusercontent.com/zmustafa/LogAnalyti
 
 Query for Log Analytics alert: https://raw.githubusercontent.com/zmustafa/LogAnalyticsCustomLog/main/query%20for%20alert.txt
 
-https://zeeshan.net/build-azure-dashboards-from-legacy-application-custom-logs/
+https://zeeshan.net/develop-azure-dashboards-from-legacy-application-custom-logs/
