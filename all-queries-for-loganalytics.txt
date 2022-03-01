@@ -1,0 +1,54 @@
+//Unique Logins Per Day
+appevents_CL 
+| extend d=parse_json(substring(RawData,indexof(RawData,"{")))
+| extend UserName = tostring(d.UserName)
+| where d.Event == "SuccessfulLogin"
+| summarize TotalUsers = dcount(UserName) by Date = bin (TimeGenerated,1d) 
+| render  columnchart         
+
+
+//Total Logins Per Hour
+appevents_CL 
+| extend d=parse_json(substring(RawData,indexof(RawData,"{")))
+| extend UserName = tostring(d.UserName)
+| where d.Event == "SuccessfulLogin"
+| summarize TotalLogins = count() by Hours=bin (TimeGenerated,1h)
+| render      timechart     
+ 
+
+//Unique Logins By User Per Hour
+appevents_CL 
+| extend d=parse_json(substring(RawData,indexof(RawData,"{")))
+| extend UserName = tostring(d.UserName)
+| where d.Event == "SuccessfulLogin"
+| summarize count() by bin (TimeGenerated, 1h), UserName
+| render   columnchart      
+
+// Total Activities by Type
+appevents_CL 
+| extend d=parse_json(substring(RawData,indexof(RawData,"{")))
+| extend Country = tostring(d.Country)
+| extend Event = tostring(d.Event)
+| summarize count() by Event
+| render   piechart
+
+
+//Total Successful Login By Country
+appevents_CL 
+| extend d=parse_json(substring(RawData,indexof(RawData,"{")))
+| extend Country = tostring(d.Country)
+| where d.Event == "SuccessfulLogin"
+| summarize count() by Country
+| render   piechart       
+
+
+
+// Total Activities by Country
+ appevents_CL 
+ | extend d=parse_json(substring(RawData,indexof(RawData,"{")))
+  | extend Country = tostring(d.Country)
+ | extend Event = tostring(d.Event)
+ | summarize count() by Country, Event
+ | render   columnchart   
+
+ 
