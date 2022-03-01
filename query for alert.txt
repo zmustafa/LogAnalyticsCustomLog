@@ -1,0 +1,6 @@
+//Total Logins in last 1 hour
+appevents_CL 
+| where TimeGenerated  > ago(1h)
+| extend d=parse_json(substring(RawData,indexof(RawData,"{")))
+| extend UserName = tostring(d.UserName)
+| where d.Event == "SuccessfulLogin"  
