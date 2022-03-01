@@ -1,4 +1,4 @@
-# Build Azure Dashboards from Legacy Application Custom Logs
+# Develop Azure Dashboards from Legacy Application Custom Logs
 
 Sample data: https://raw.githubusercontent.com/zmustafa/LogAnalyticsCustomLog/main/App-Logs-Events-Feb-1-15.txt
 
